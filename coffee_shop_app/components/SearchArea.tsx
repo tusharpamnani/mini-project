@@ -13,7 +13,7 @@ const SearchArea = () => {
             Location
         </Text>
         <Text className='text-white text font-[Sora-Regular]'>
-            Bilzen, Tanjungbalai
+            Nagpur, Maharashtra
         </Text>
 
         

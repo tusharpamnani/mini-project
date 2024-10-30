@@ -35,6 +35,11 @@ export default function Index() {
                 <Text className="text-xl color-white font-[Sora-SemiBold]">Get Started</Text> 
               </TouchableOpacity> 
           </View>
+          <View>
+            <Text className="color-gray-400 mt-10">
+            Made with &#9829; for RBU
+            </Text>
+          </View>
         </ImageBackground>
       </SafeAreaView>
     </GestureHandlerRootView>
