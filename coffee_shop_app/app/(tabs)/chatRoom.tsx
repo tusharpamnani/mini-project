@@ -24,36 +24,36 @@ const ChatRoom = () => {
   const handleSendMessage = async () => {
     let message = textRef.current.trim();
     if (!message) return;
+  
     try {
-
-        // Add the user message to the list of messages
-        let InputMessages = [...messages, { content:message, role: 'user' }];
-
-        setMessages(InputMessages);
-        textRef.current = ''
-        if(inputRef) inputRef?.current?.clear();
-        setIsTyping(true)
-        let resposnseMessage = await callChatBotAPI(InputMessages);
-        setIsTyping(false)
-        setMessages(prevMessages => [...prevMessages, resposnseMessage]);
-        
-        if (resposnseMessage) {
-            if (resposnseMessage.memory ) {
-                if (resposnseMessage.memory.order) {
-                    emptyCart()
-                    resposnseMessage.memory.order.forEach((item: any) => {
-                    addToCart(item.item, item.quantity)
-                    });
-                }
-            }
-        }
-        
-
-    } catch(err:any ) {
-        Alert.alert('Message', err.message)
+      const InputMessages = [...messages, { content: message, role: 'user' }];
+      setMessages(InputMessages);
+  
+      textRef.current = '';
+      inputRef?.current?.clear();
+      setIsTyping(true);
+  
+      const resposnseMessage = await callChatBotAPI(InputMessages);
+      setIsTyping(false);
+  
+      if (resposnseMessage?.content) {
+        setMessages(prevMessages => [
+          ...prevMessages,
+          { content: resposnseMessage.content, role: 'assistant' }
+        ]);
+      }
+  
+      if (resposnseMessage?.memory?.order) {
+        emptyCart();
+        resposnseMessage.memory.order.forEach((item: any) => {
+          addToCart(item.item, item.quantity);
+        });
+      }
+    } catch (err: any) {
+      Alert.alert('Message', err.message);
     }
-
-  }
+  };
+  
 
   return (
     <GestureHandlerRootView>
