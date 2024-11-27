@@ -26,7 +26,7 @@ export default function Index() {
             className="pt-3 text-[#A2A2A2] text-center font-[Sora-Regular]" 
             >
             
-            Welcome to our cozy coffee corner, where every cup is a delightful for you.
+            Welcome to KUKI, our cozy coffee corner, where every cup is a delightful for you.
             </Text>
               <TouchableOpacity 
                 className="bg-[#C57C3E] mt-10 p-3 rounded-lg items-center" 
